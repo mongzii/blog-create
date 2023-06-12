@@ -59,10 +59,11 @@ function App() {
             >
               {글제목[i]}
               <span
-                onClick={() => {
+                onClick={e => {
                   // 따봉변경(따봉 + 1);
                   let copy = [...따봉];
                   copy[i] = copy[i] + 1;
+                  e.stopPropagation();
                   따봉변경(copy);
                 }}
               >
@@ -75,6 +76,12 @@ function App() {
           </div>
         );
       })}
+
+      {/* <input
+        onChange={e => {
+          console.log(e.target.value);
+        }}
+      /> */}
 
       {modal === true ? (
         <Modal title={title} 글제목변경={글제목변경} 글제목={글제목} />
